@@ -1,0 +1,196 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* ------------------------------------------------------------------ */
+/* GLOBAL FOUNDATIONS                                                  */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --gold: #E8C275;
+  --blush: #F4B6C2;
+  --plum: #2A1245;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #05030A;
+  color: #F5EDE0;
+  overflow-x: hidden;
+  /* Custom cursor area handled by CursorGlow component */
+  cursor: default;
+}
+
+/* Light mode overrides (toggle adds .light to <html>) */
+html.light body {
+  background-color: #FBF6F0;
+  color: #2A1245;
+}
+
+/* ------------------------------------------------------------------ */
+/* SCROLLBAR - elegant gold thread on dark velvet                      */
+/* ------------------------------------------------------------------ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0F0817;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #E8C275, #6B2B8C);
+  border-radius: 10px;
+}
+
+/* ------------------------------------------------------------------ */
+/* TYPOGRAPHY HELPERS                                                  */
+/* ------------------------------------------------------------------ */
+
+.font-display { font-family: 'Playfair Display', serif; }
+.font-script { font-family: 'Great Vibes', cursive; }
+
+.text-gold-glow {
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(232,194,117,0.6), 0 0 30px rgba(232,194,117,0.25);
+}
+
+.text-blush-glow {
+  color: var(--blush);
+  text-shadow: 0 0 14px rgba(244,182,194,0.55);
+}
+
+/* Shimmering gold text used for big titles */
+.shimmer-text {
+  background: linear-gradient(110deg, #E8C275 20%, #F6E3B4 40%, #E8C275 60%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* SECTION FRAME                                                       */
+/* ------------------------------------------------------------------ */
+
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.25rem;
+  overflow: hidden;
+}
+
+/* Soft vignette applied to every section for cinematic depth */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.55) 100%);
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------------ */
+/* GLASS / LUXURY CARD                                                 */
+/* ------------------------------------------------------------------ */
+
+.glass-card {
+  background: rgba(42, 18, 69, 0.35);
+  border: 1px solid rgba(232, 194, 117, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 1.25rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* BUTTONS                                                             */
+/* ------------------------------------------------------------------ */
+
+.btn-luxury {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.08em;
+  padding: 0.9rem 2.5rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #E8C275, #F6E3B4, #E8C275);
+  background-size: 200% auto;
+  color: #2A1245;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(232,194,117,0.45);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.btn-luxury:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 40px rgba(232,194,117,0.75);
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* CUSTOM CURSOR GLOW                                                  */
+/* ------------------------------------------------------------------ */
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(244,182,194,0.55) 0%, rgba(232,194,117,0.25) 50%, transparent 80%);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: opacity 0.2s ease;
+}
+
+/* ------------------------------------------------------------------ */
+/* FLOATING HEART                                                      */
+/* ------------------------------------------------------------------ */
+
+.floating-heart {
+  position: absolute;
+  bottom: -10%;
+  font-size: 1.5rem;
+  color: var(--blush);
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(244,182,194,0.6));
+}
+
+/* ------------------------------------------------------------------ */
+/* TWINKLING STAR                                                      */
+/* ------------------------------------------------------------------ */
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* LOADER HEART                                                        */
+/* ------------------------------------------------------------------ */
+
+.loader-heart {
+  font-size: 4rem;
+  color: var(--blush);
+  filter: drop-shadow(0 0 20px rgba(244,182,194,0.7));
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
